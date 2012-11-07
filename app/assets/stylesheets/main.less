@@ -1,0 +1,131 @@
+@import 'css3.less';
+
+body {
+    background-image: -ms-radial-gradient(center, circle farthest-corner, #873107 0%, #290F02 100%);
+    background-image: -moz-radial-gradient(center, circle farthest-corner, #873107 0%, #290F02 100%);
+    background-image: -o-radial-gradient(center, circle farthest-corner, #873107 0%, #290F02 100%);
+    background-image: -webkit-gradient(radial, center center, 0, center center, 497, color-stop(0, #873107), color-stop(1, #290F02));
+    background-image: -webkit-radial-gradient(center, circle farthest-corner, #873107 0%, #290F02 100%);
+    background-image: radial-gradient(circle farthest-corner at center, #873107 0%, #290F02 100%);
+    font-size: 16px;
+    font-weight: 200;
+    color: #ddd;
+}
+
+a {
+    color: #FAA732;
+    &:hover {
+        color: #e3982d;
+    }
+}
+
+.loading {
+    background-image: url('/assets/images/loading.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width:62px;
+    height: 34px;
+    display: block;
+}
+
+.check-mobility {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    padding: 10px;
+    @media (min-width: 480px) {
+        width: 480px;
+    }
+
+
+    input {
+        font-size: 20px;
+        height: 37px;
+        line-height: 24px;
+        width: 100%;
+    }
+
+    .input-wrapper {
+        overflow: hidden;
+        padding-right: 20px;
+    }
+
+    .search-button {
+        font-size: 20px;
+        height: 48px;
+        float: right;
+    }
+
+    h1 {
+        color: #fff;
+        font-size: 3.7em;
+        margin-bottom: 15px;
+        line-height: 56px;
+    }
+
+}
+
+.result {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+
+
+    @media (min-width: 768px) {
+        width: 768px;
+    }
+    .box {
+        width: 100%;
+        .rounded(2px);
+        overflow: hidden;
+        background: #53290c;
+        border: 1px solid #1a0b02;
+        margin-top: 20px;
+
+        .header {
+            background: #381c07;
+            padding: 5px 10px;
+            h3 {
+                margin:0;
+                padding: 0;
+                font-size: 18px;
+            }
+        }
+
+        .hint {
+            padding: 10px;
+
+            .label-count {
+                font-size: 20px;
+                line-height: 30px;
+            }
+            .count {
+                font-size: 24px;
+                font-style: italic;
+                color: #FAA732;
+            }
+        }
+
+
+
+        pre {
+            margin: 10px 0px;
+        }
+
+        .ok {
+            background-image: url('/assets/images/ok.png');
+            background-repeat: no-repeat;
+            background-position: right top;
+        }
+        .no {
+            background-image: url('/assets/images/no.png');
+            background-repeat: no-repeat;
+            background-position: right top;
+        }
+    }
+    .mobile-redirect {
+
+    }
+}

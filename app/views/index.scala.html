@@ -1,0 +1,73 @@
+@main("Are you mobile?") {
+
+<section ng-controller="CheckMobilityCtrl">
+    <section class="check-mobility">
+        <header>
+            <h1>Are you mobile?</h1>
+            <p>Test your site with our mobility checker. Get immediate answers on what you can do to improve.</p>
+        </header>
+        <form ng-submit="checkUrl()">
+            <button class="btn search-button btn-warning" type="button" ng-click="checkUrl()"><span ng-hide="isLoading">Check!</span><span class="loading" ng-show="isLoading"></span></button>
+            <div class="input-wrapper">
+                <input type="text" name="url" ng-model="site.url" placeholder="http://mobilago.com" />
+            </div>
+        </form>
+    </section>
+
+    <section class="result alert alert-danger" ng-show="result && result.broken">
+        Sorry, we were not able to crawl your site.
+    </section>
+    <section class="result" ng-show="result && !result.broken">
+        <section class="box">
+            <header class="header" ng-class="redirectClass">
+                <h3>Mobile redirect</h3>
+            </header>
+            <section class="hint">
+                A mobile redirect is accomplished by looking at the user-agent string and matching it against iPhones, iPads, Androids etc. Here's an example of how you could redirect all iPhones to your mobile page with Javascript.
+                <pre class="prettyprint">
+&lt;script type=&quot;text/javascript&quot;&gt;
+if ((navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/android/i))) {
+    location.replace("http://m.mobilago.com");
+}
+&lt;/script&gt;</pre>
+            </section>
+        </section>
+        <section class="box">
+            <header class="header" ng-class="viewportClass">
+                <h3>Viewport set</h3>
+            </header>
+            <section class="hint">
+                <p>This tag tries to solve the problem with pixel density. You can read more about it in the article <a href="http://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html">A pixel is not a pixel is not a pixel</a>. Usually you're off to a good start by setting the meta tag below in your HTML header.</p>
+                <pre class="prettyprint">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
+            </section>
+        </section>
+        <section class="box">
+            <header class="header" ng-class="mediaQueriesClass">
+                <h3>Use of CSS media queries</h3>
+            </header>
+            <section class="hint">
+                <p>By using css media queries you can do all kinds of cool stuff to change you site depending on the screen size for instance. Here's a good article to read when you're starting out with <a href="http://css-tricks.com/css-media-queries/">media queries</a>.</p>
+                <pre class="prettyprint">
+@@media (max-width: 480px) {
+    display: none;
+}
+                </pre>
+            </section>
+        </section>
+        <section class="box">
+            <header class="header" ng-class="countClass">
+                <h3>Script & css requests</h3>
+            </header>
+            <section class="hint">
+                <p>When browsing the web on a desktop computer you usually have a pretty good Internet connection. When on a mobile device that might not be the case. On a mobile device every byte counts. But what might be even more important is that <strong>every request counts</strong>. Try to combine as many javasscripts into one script, and do the same for css files if you can.</p>
+                <div>
+                    <span class="label-count">Scripts:</span> <span class="count" ng-bind="result.scriptCount"></span>
+                </div>
+                <div>
+                    <span class="label-count">CSS:</span> <span class="count" ng-bind="result.cssCount"></span>
+                </div>
+            </section>
+        </section>
+    </section>
+</section>
+}
